@@ -6,7 +6,7 @@ int sum(int a, int b);
 int main()
 {
     int num1, num2;
-    printf("Enter the 2 numbers num1 .and num2 \n");
+    printf("Enter the 2 numbers num1 and num2 \n");
     scanf("%d", &num1);
     scanf("%d", &num2);
     std::cout << sum(num1, num2) << std::endl;
