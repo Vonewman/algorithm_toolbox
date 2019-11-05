@@ -1,8 +1,9 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 /*Find the maximum product of two distinct numbers in a sequence of non-negative integers*/
 
-long long MaxPairwiseProduct(const std::vector<int>& numbers);
+int MaxPairwiseProduct(const std::vector<int>& numbers);
 long long MaxPairwiseProductFast(const std::vector<int>& numbers);
 
 int main()
@@ -18,21 +19,16 @@ int main()
     return 0;
 }
 
-long long MaxPairwiseProduct(const std::vector<int>& numbers)
-{
-    long long result = 0;
-    int n = numbers.size();
-    for (int i = 0; i < n; ++i)
-    {
-        for (int j = 0; j < n; ++j)
-        {
-            if (((long long)numbers[i]) * numbers[i] > result)
-            {
-                result = ((long long)numbers[i]) * numbers[j];
-            }
-        }
+int MaxPairwiseProduct(const std::vector<int>& numbers) {
+  int result = 0;
+  int n = numbers.size();
+  for (int i = 0; i < n; i++) {
+    for (int j = i+1; j < n; j++) {
+      result = std::max(result, numbers[i]*numbers[j]);
     }
-    return result;
+  }
+
+  return result;
 }
 
 long long MaxPairwiseProductFast(const std::vector<int>& numbers)
