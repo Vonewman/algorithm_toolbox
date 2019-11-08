@@ -1,3 +1,5 @@
+from sys import stdin, stdout
+
 def max_pairwise_product(numbers):
     n = len(numbers)
     max_product = 0
@@ -9,19 +11,48 @@ def max_pairwise_product(numbers):
 
 def max_pairwise_product_fast(numbers):
     n = len(numbers)
-
-    max_index1 = -1
+    index1 = 0
+    for i in range(1, n):
+        if numbers[i] > numbers[index1]:
+            index1 = i
+    if index1 == 0:
+        index2 = 1
+    else:
+        index2 = 0
     for i in range(n):
-        if ((max_index1 == -1) or (numbers[i] > numbers[max_index1])):
-            max_index1 = i
+        if numbers[i] != numbers[index1] and numbers[i]>numbers[index2]:
+            index2 = i
 
-    max_index2 = -1
-    for j in range(n):
-        if ((numbers[j] != numbers[max_index1]) and ((max_index2 == -1) or (numbers[j] > numbers[max_index2]))):
-            max_index2 = j
+    return numbers[index1]*numbers[index2]
 
-    return (numbers[max_index1]) * numbers[max_index2]
-                                                                           
 
-numbers = [1, 2, 3]
-print("{}".format(max_pairwise_product(numbers)))
+def max_pairwise_product_much_faster(numbers):
+    n = len(numbers)
+    index = 0
+    for i in range(1, n):
+        if numbers[i] > numbers[index]:
+            index = i
+    # swap numbers[index] and numbers[n-1]
+    numbers[index], numbers[n-1] = numbers[n-1], numbers[index]
+
+    index = 0
+    for i in range(1, n-1):
+        if numbers[i] > numbers[index]:
+            index = i
+    # swap numbers[index] and numbers[n-2]
+    numbers[index], numbers[n-2] = numbers[n-2], numbers[index]
+
+    return numbers[n-2]*numbers[n-1]
+
+    
+# A other way of solving the max_pairwise problem
+# Complexity O(nlgn)
+def max_pairwise_product_fast_by_sorting(numbers):
+    n = len(numbers)
+    sorted(numbers)
+    return numbers[n-2]*numbers[n-1]
+
+if __name__ == '__main__':
+    n = stdin.readline()
+    numbers = [int(x) for x in stdin.readline().split()]
+    print(max_pairwise_product_much_faster(numbers))
