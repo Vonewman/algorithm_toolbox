@@ -14,7 +14,7 @@ unsigned int count(const vector<int> &a, int left, int right, int element)
 	{
 	    count++;
 	}
-     }
+    }
     return count;
 }
 
