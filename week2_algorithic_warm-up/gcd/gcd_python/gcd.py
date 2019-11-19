@@ -1,5 +1,6 @@
 from sys import stdin
 
+
 def gcd_fast(a, b):
     if (b == 0):
         return a
