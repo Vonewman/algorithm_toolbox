@@ -1,2 +1,2 @@
-fib: fibonacci.cc
-	g++ -Wall -o fib fibonacci.cc
+fibonacci: fibonacci.cc
+	g++ -pipe -O2 -std=c++17 fibonacci.cc -lm
