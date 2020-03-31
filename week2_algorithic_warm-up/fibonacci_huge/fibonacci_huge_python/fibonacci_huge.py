@@ -1,4 +1,4 @@
-import sys
+from sys import stdin
 
 def pisano_period(m):
     """
@@ -35,7 +35,7 @@ def fibonacci_huge(n, m):
     return res % m
 
 
-
-n = int(input())
-m = int(input())
-print(fibonacci_huge(n, m))
+if __name__ == '__main__':
+    input = stdin.readline()
+    n, m = map(int, input.split())
+    print(fibonacci_huge(n, m))

@@ -7,15 +7,18 @@ long long fibonacci_huge(long long, long long);
 
 int main()
 {
-    //    for (int i = 2; i < 100; i++)
-    //{
-    //    std::cout << i << " : " << pisano_period(i) << '\n';
-    //}
-    //return 0;
-
+    /*
+    for (int i = 2; i < 100; i++)
+    {
+	std::cout << i << " : " << pisano_period(i) << '\n';
+    }
+    return 0;
+    */
+    
     long long n, m;
     std::cin >> n >> m;
-    std::cout << fibonacci_huge(n, m) << '\n'; 
+    std::cout << fibonacci_huge(n, m) << '\n';
+    return 0;
 }
 
 

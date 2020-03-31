@@ -2,12 +2,13 @@
 
 
 int fibonacciSumLastDigit(int);
+long long fibonacci(int);
+int fibonacciSumLastDigitFast(int);
 
-int main()
-{
+int main(){
     int n;
     std::cin >> n;
-    std::cout << fibonacciSumLastDigit(n) << '\n'; 
+    std::cout << fibonacciSumLastDigitFast(n) << '\n'; 
 }
 
 int fibonacciSumLastDigit(int n)
@@ -26,6 +27,22 @@ int fibonacciSumLastDigit(int n)
         fib[i] = fib[i-1] + fib[i-2];
         sum += fib[i];
     }
+
+    return sum % 10;
+}
+
+long long fibonacci(int n) {
+    int F[n];
+    F[0] = 0;
+    F[1] = 1;
+
+    for (int i=2; i <= n; i++)
+	F[i] = F[i-1] + F[i-2];
+    return ((long long) F[n]);
+ }
+
+int fibonacciSumLastDigitFast(int n) {
+    int sum = fibonacci(n+2) - 1;
 
     return sum % 10;
 }

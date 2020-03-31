@@ -1,3 +1,5 @@
+from sys import stdin
+
 def fibonacci_sum_last_digit(n):
     if n <= 0:
         return 0
@@ -14,6 +16,7 @@ def fibonacci_sum_last_digit(n):
         sum += fib[i]
 
     return sum % 10
+
 
 n = int(input())
 print(fibonacci_sum_last_digit(n))

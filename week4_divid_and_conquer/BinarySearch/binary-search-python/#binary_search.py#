@@ -23,8 +23,7 @@ def binary_search(A, key):
 
 
 if __name__ == '__main__':
-    input = stdin.readline()
-    data = list(map(int, input.split()))
+    data = list(map(int, stdin.readline().split()))
     n = data[0]
     m = data[n + 1]
     a = data[1 : n+1]

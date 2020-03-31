@@ -1,51 +1,38 @@
-from sys import stdin, stdout
+def majGuess(A, n, part = True):
+    """ returns the majority element of A if one exists
+    could return anything if no majority element exists
+    parameter ''part'' is a boolean which is true
+    if A[n] has less ''weight'' than the other elements."""
 
-def count(a, left, right, element):
-    count = 0
-    for i in range(left, right):
-        if a[i] == element:
-            count = count + 1
+    if n == 0:
+        return None     # there is no majority element
+    if n == 1:
+        return A[0]     # it is the majority element
 
-    return count
+    i = 0       # place in A[]
+    j = 0       # first empty position in new array
 
-def majorityElement(a, left, right):
-    if left > right:
-        return None
-    if left == right:
-        return a[left]
+    while i<(n-2):
+        if A[i] == A[i+1]:
+            B[j] = A[i]   # find matching pairs, through out unmatched pairs
+            j = j+1
+            i = i+2
 
-    mid = left + (right - left) / 2
-    leftCount = majorityElement(a, left, mid)
-    rightCount = majorityElement(a, mid + 1, right)
-
-    if leftCount == -1 and rightCount != -1:
-        num = count(a, left, right, rightCount)
-        if num > (right - left + 1) / 2:
-            return rightCount
-        else:
-            return None
-    elif rightCount == -1 and rightCount != -1:
-        num = count(a, left, right, leftCount)
-        if (num > (right - left + 1) / 2):
-            return leftCount
-        else:
-            return None
-
-    elif leftCount != -1 and rightCount != -1:
-        leftNum = count(a, left, right, leftCount)
-        rightNUm = count(a, left, right, rightCount)
-        if (leftNum > (right - left + 1) / 2):
-            return leftCount
-        elif rightNUm > (right - left + 1)/2:
-            return rightCount
-        else:
-            return None
-
+    if i == n-1:
+        B[j] = A[n-1]
+        part = True
     else:
-        return None
+        if part:
+            B[j] = A[n-2]
+        elif A[n-2] == A[n-1]:
+            B[j] = A[n-2]
+        else:
+            j = j-1
 
-if __name__ == '__main__':
-    n = stdin.readline()
-    arr = [int(x) for x in stdin.readline().split()]
-    print(majorityElement(arr, 0, len(arr) - 1))
-    
+    return majGuess(B, j, part)
+
+
+# Test
+Arr = [2, 3, 9, 2, 2]
+n = len(Arr)
+print("{}".format(majGuess(Arr, n, False)))
