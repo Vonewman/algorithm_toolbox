@@ -1,14 +1,9 @@
-def change(m):
-    coins = [1, 5, 10]
-    ans = []
-    n = len(coins)
-    for i in range(n):
-        while m >= coins[i]:
-            m = m-coins[i]
-            ans.append(coins[i])
-    string = ''.join(str(e) for e in ans)
+import sys
 
-    return string
+def get_change(m):
+    # write your code here
+    return (m//10) + ((m%10)//5) + (m%5)
 
-m = int(input())
-print("{}".format(change(m)))
+if __name__ == '__main__':
+    m = int(sys.stdin.readline())
+    print(get_change(m))
