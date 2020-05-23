@@ -1,3 +1,7 @@
+# Implementation of the Long Increasing Sequence algorithm
+# using an memoization technique
+# Running Time: O(n^2)  
+
 T = dict()
 
 def lis(A, i):
