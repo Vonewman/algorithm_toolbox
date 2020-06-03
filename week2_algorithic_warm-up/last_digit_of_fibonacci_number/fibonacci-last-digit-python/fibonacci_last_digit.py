@@ -1,6 +1,6 @@
 from sys import stdin
 
-def last_digit_naive(n):
+def get_fibonacci_last_digit_naive(n):
     """
     Naive Algorithm that compute the last fibonacci number
     """
@@ -11,9 +11,9 @@ def last_digit_naive(n):
     current = 1
 
     for _ in range(n-1):
-        previous, current = current, previous + current
+        previous, current = current, (previous + current) % 10
 
-    return current % 10
+    return current
 
 def last_digit_fast(n):
     """
@@ -30,4 +30,4 @@ def last_digit_fast(n):
 if __name__ == '__main__':
     input = stdin.readline()
     n = int(input)
-    print(last_digit_fast(n))
+    print(get_fibonacci_last_digit_naive(n))
