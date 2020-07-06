@@ -3,10 +3,11 @@ def calc_fib(n):
     Naiv algorithm that compute the fibonacci Number
     T(n) = T(n-1) + T(n-2) + 3
     """
-    if (n <= 1):
-        return n
-
-    return calc_fib(n - 1) + calc_fib(n - 2)
+    f = [0, 1]
+    for i in range(2, n+1):
+        num_new = f[i - 1] + f[i - 2]
+        f.append(num_new)
+    return f[n]
 
 def calc_fib_fast(n):
     """
@@ -34,4 +35,4 @@ def calc_fib_faster(n):
 
 if __name__ == '__main__':
     n = int(input())
-    print(calc_fib_faster(n))
+    print(calc_fib(n))

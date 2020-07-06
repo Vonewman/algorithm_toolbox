@@ -1,3 +1,5 @@
+import sys
+
 def lcm_naive(a, b):
     for l in range(1, a*b+1):
         if l % a == 0 and l % b == 0:
@@ -15,7 +17,8 @@ def gcd(a, b):
 def lcm(a, b):
     return (a*b)/gcd(a,b)
 
-a = int(input())
-b = int(input())
 
-print(lcm(a, b))
+if __name__ == '__main__':
+    input = sys.stdin.readline()
+    a, b = map(int, input.split())
+    print(lcm(a, b))

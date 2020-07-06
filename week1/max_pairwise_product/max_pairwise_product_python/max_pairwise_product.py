@@ -27,6 +27,11 @@ def max_pairwise_product_fast(numbers):
 
 
 def max_pairwise_product_much_faster(numbers):
+    """ 
+    Return the maximum pairwise product of the two 
+    distinct numbers in a sequence of non-negative
+    integers.
+    """
     n = len(numbers)
     index = 0
     for i in range(1, n):

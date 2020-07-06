@@ -1,5 +1,13 @@
 from sys import stdin
 
+def gcd(a, b):
+    while True:
+        remainder = a % b
+        if (remainder == 0):
+            return b
+        else:
+            a, b = b, remainder
+
 
 def gcd_fast(a, b):
     if (b == 0):
@@ -11,4 +19,4 @@ def gcd_fast(a, b):
 if __name__ == '__main__':
     input = stdin.readline()
     a, b = map(int, input.split())
-    print("{}".format(gcd_fast(a, b)))  
+    print("{}".format(gcd(a, b)))  
