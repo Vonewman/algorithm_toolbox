@@ -27,5 +27,29 @@ int main()
 
 int compute_min_refills(int dist, int tank, vector<int>& stops) 
 {
-	return -1;
+	if (dist < tank)
+		return 0;
+	int curr_fuel = tank;
+	int cur_distance = 0;
+	int num_stops = 0;
+
+	stops.push_back(dist);
+	stops.insert(stops.begin(), 0);
+
+	for (int i = 0; i < stops.size() - 1; i++)
+	{
+		if ((stops[i+1] - stops[i]) > tank)
+		{
+			return -1;
+		} else if ((stops[i+1] - stops[i]) > curr_fuel) {
+			num_stops += 1;
+			curr_fuel = tank;
+			curr_fuel -= (stops[i+1] - stops[i]);
+		} else {
+			curr_fuel -= (stops[i+1] - stops[i]);
+		}
+	}
+
+
+	return num_stops;
 }
