@@ -1,0 +1,11 @@
+import sys
+
+def get_fibonacci_huge_naive(n, m):
+    curr, prev = 1, 0
+    for i in range(m*m+1):
+        print(i)
+        prev, curr = curr, (curr+prev)%m
+        if (prev, curr) == (0, 1):
+            time_period = i+1
+            print('here', time_period)
+            break
