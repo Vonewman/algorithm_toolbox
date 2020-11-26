@@ -37,6 +37,7 @@ long long MaxPairwiseProduct(const std::vector<int>& numbers)
 
 long long MaxPairwiseProductFast(const std::vector<int>& numbers)
 {
+    // A faster algorithm 
     int n = numbers.size();
 
     int max_index1 = -1;
