@@ -3,6 +3,7 @@
 @author: Abdoulaye Diallo.
 """
 
+
 def fib(n):
     """
     Running Time O(Fn)
